@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Prediction League</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<h1>Prediction League</h1>
+
+<nav>
+<a href="index.html">Submit Prediction</a>
+<a href="approve.html">Manager Approval</a>
+<a href="results.html">Manager Results</a>
+<a href="leaderboard.html">Leaderboard</a>
+</nav>
+
+<h2>Submit Prediction</h2>
+
+<label>Your Name</label>
+<input id="user" type="text">
+
+<label>Select Match</label>
+<select id="match"></select>
+
+<label>Prediction</label>
+<input id="prediction" type="text">
+
+<label>
+<input type="checkbox" id="bold">
+Bold Prediction (2 points)
+</label>
+
+<button onclick="submitPrediction()">Submit Prediction</button>
+
+<p id="status"></p>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
