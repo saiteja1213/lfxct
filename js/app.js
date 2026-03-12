@@ -34,28 +34,26 @@ dropdown.appendChild(opt);
 }
 
 async function submitPrediction(){
+    const data = {
+        username: document.getElementById("user").value,
+        match: document.getElementById("match").value,
+        prediction: document.getElementById("prediction").value,
+        bold: document.getElementById("bold").checked,
+        timestamp: new Date()
+    };
 
-const data = {
-user: document.getElementById("user").value,
-match: document.getElementById("match").value,
-prediction: document.getElementById("prediction").value,
-bold: document.getElementById("bold").checked,
-timestamp: new Date()
-};
+    const res = await fetch(API_BASE + "/prediction",{
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:JSON.stringify(data)
+    });
 
-await fetch(API_BASE + "/prediction",{
-
-method:"POST",
-headers:{
-"Content-Type":"application/json"
-},
-
-body:JSON.stringify(data)
-
-});
-
-document.getElementById("status").innerText="Prediction Submitted";
-
+    if(res.ok){
+        document.getElementById("status").innerText = "Prediction Submitted!";
+    } else {
+        document.getElementById("status").innerText = "Error submitting prediction";
+        console.error(await res.text());
+    }
 }
 
 async function loadApprovals(){
