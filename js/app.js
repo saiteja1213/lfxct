@@ -1,4 +1,4 @@
-const API_BASE = "https://your-api.azurewebsites.net";
+const API_BASE = "https://lemon-pebble-06657391e.6.azurestaticapps.net";
 
 async function loadMatches(){
 
