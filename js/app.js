@@ -2,20 +2,32 @@ const API_BASE = "https://lemon-pebble-06657391e.6.azurestaticapps.net";
 
 async function loadMatches(){
 
-const res = await fetch(API_BASE + "/matches/today");
+const res = await fetch("data/matches.json");
 const matches = await res.json();
 
 const dropdown = document.getElementById("match");
 
 if(!dropdown) return;
 
+const today = new Date();
+
+const todayString =
+String(today.getMonth()+1).padStart(2,'0') + "-" +
+String(today.getDate()).padStart(2,'0') + "-" +
+today.getFullYear();
+
 matches.forEach(m => {
 
+if(m.match_date === todayString){
+
 let opt = document.createElement("option");
+
 opt.value = m.match_name;
 opt.text = m.match_name;
 
 dropdown.appendChild(opt);
+
+}
 
 });
 
